@@ -14,17 +14,29 @@
                 Simon
             </h1>
             <nav>
-                <ul>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                <ul class="navbar">
+                    <li class="navbar__item"><a href=""></a></li>
+                    <li class="navbar__item"><a href=""></a></li>
                 </ul>
             </nav>
         </header>
         <main>
-            <button type="button" class="btn-start">
-                <span>Jugar</span>
-            </button>
-            <div class="console-wrapper">
+            <section class="user-messages">
+                <button type="button" class="message btn-game btn-start">
+                    <span>Jugar</span>
+                </button>
+                <h4 class="game-over message message-header"><span class="game-over__devil">😈</span> Game Over</h4>
+                <h4 class="congratulation message message-header">👍 Bien hecho!</h4>
+                <div class="next-level message">
+                    <h4 class="message-header">
+                        ¡Excelente, continuemos al siguiente nivel! 
+                    </h4>
+                    <button class="btn-game btn-next" type="button">
+                        Siguiente
+                    </button>
+                </div>
+            </section>
+            <section class="console-wrapper blocked">
                 <div class="console__shadow"></div>
                 <div class="console__base shine texture"></div>
                 <div class="console__back texture"></div>
@@ -32,18 +44,16 @@
                 </div>
                 <div class="console">
                     <div class="console__cell">
-                        <button class="console__cell__btn blue" type="button">
-
-                        </button>
+                        <button class="console__cell__btn blue" id="blue" type="button" disabled></button>
                     </div>
                      <div class="console__cell">
-                        <button class="console__cell__btn red" type="button"></button>
+                        <button class="console__cell__btn red" id="red" type="button" disabled></button>
                     </div>
                      <div class="console__cell">
-                        <button class="console__cell__btn yellow texture" type="button"></button>
+                        <button class="console__cell__btn yellow texture" id="yellow" type="button" disabled></button>
                     </div>
                      <div class="console__cell">
-                        <button class="console__cell__btn green" type="button"></button>
+                        <button class="console__cell__btn green" id="green" type="button" disabled></button>
                     </div>
                 </div>
                 <div class="console__front texture"></div>
@@ -56,14 +66,15 @@
                     </h3>
                 </div>
                 
-            </div>
+            </section>
         </main>
         <footer>
             <div class="credits">
                 <img src="images/uai.svg" alt="logo Universidad Abierta Interamericana" class="brand"/>
+
+                <h6 class="credits__subject">Lenguajes de Programación para la Administración</h6>
             </div>
         </footer>
-        <simon-root></simon-root>
     </div>
     <script src="main.js" type="module"></script>
 </body>

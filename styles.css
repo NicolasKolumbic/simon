@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Passion+One&family=Schibsted+Grotesk:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&family=Schibsted+Grotesk:wght@500&display=swap&family=Open+Sans:wght@400;500;600;700');
 
 html {
     height: 100%;
@@ -11,13 +11,26 @@ body {
       font-family: 'Passion One', cursive;
 }
 
+.formal {
+    font-family: 'Open Sans';
+    color: white;
+}
+
 .title {
     color: white;
     font-weight: 400;
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
     padding: 0 1rem;
+}
+
+.navbar {
+    margin:0;
+    padding:0;
+    list-style-type: none;
 }
 
 .container {
@@ -64,6 +77,10 @@ main {
     border: 1px solid rgb(255 251 251 / 20%);
 }
 
+.blocked .console__cell__btn {
+    cursor: no-drop;
+}
+
 
 .console__cell__btn::after {
     content:'';
@@ -77,7 +94,11 @@ main {
     left:0;
 }
 
-.console__cell__btn:hover::after {
+.console__cell__btn:not([disabled]):hover::after {
+    opacity: 0.5;
+}
+
+.console__cell__btn:not([disabled]):active::after {
     opacity: 1;
 }
 
@@ -88,7 +109,7 @@ main {
 
 .blue {
     clip-path: circle(100% at 100% 100%);
-    background: radial-gradient(circle, rgba(9,9,141,1) 4%, rgba(7,7,83,1) 100%);
+    background: radial-gradient(circle, rgba(9,9,141,1) 4%, rgba(7,7,83,1) 100%), radial-gradient(circle, rgb(141, 9, 57) 4%, rgba(7,7,83,0) 100%);
 }
 
 .green {
@@ -116,8 +137,6 @@ main {
 .red::after {
     background: radial-gradient(circle, rgba(255,6,6,1) 4%, rgba(196,26,26,1) 100%);
 }
-
-
 
 .console__front {
     position: absolute;
@@ -318,14 +337,38 @@ footer {
 
 footer div {
     border-top: 1px dashed white;
+    display: flex;
+    justify-content: space-between;
     padding-top: 1rem;
+}
+
+.credits__subject {
+    color:white;
+    font-family: 'Open Sans';
+    font-weight: 400;
 }
 
 .brand {
     width: 200px;
 }
 
-.btn-start {
+.user-messages {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.message {
+    top: 0;
+    z-index: 1;
+    transform: scale(0);
+    position: absolute;
+}
+
+.btn-game {
     background-color: transparent;
     border: 1px solid white;
     border-radius: .25rem;
@@ -337,8 +380,60 @@ footer div {
     transition: transform 0.3s;
 }
 
-.btn-start:hover {
+.btn-game:hover {
     transform: scale(1.1);
+}
+
+.btn-start,
+.btn-next{
+    transform: scale(1);
+}
+
+.next-level {
+    text-align: center;
+}
+
+.next-level .message-header{
+    font-size: 2.2rem;
+}
+
+.next-level .btn-next {
+    margin-top: 1rem;
+}
+
+.message-header {
+    margin: 0;
+    font-size: 3rem;  
+    color: white;
+}
+
+.game-over {
+    border: 5px solid hsl(0 82% 41% / 1);
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 1px hsl(0deg 100% 50% / 100%), 1px 1px 24px hsl(0deg 100% 65%), inset 0px 1px 11px 0px hsl(0deg 100% 50% / 100%);
+    color: #ce1414;
+    padding: 0.5rem 1rem 0.5rem 4.5rem;
+    text-shadow: 1px 1px 1px hsl(0deg 100% 50% / 100%), 1px 1px 24px hsl(0deg 100% 65%);   
+}
+
+.game-over__devil {
+    position:absolute;
+    left: 5px;
+    animation: devilAnimation 1s infinite;
+}
+
+
+
+@keyframes devilAnimation{
+    0%{
+        transform: translateY(3px);
+    }
+    50%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(3px);
+    }
 }
 
 @container wrapper (min-width: 992px) {

@@ -1,6 +1,6 @@
-import GameConsole from "./game-console";
+import Match from './match.js';
 
-window.addEventListener("DOMContentLoaded", (event) => {
-    const simonConsole = new GameConsole();
+window.addEventListener('DOMContentLoaded', (event) => {
+    const game = new Match();
 });
 
