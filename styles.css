@@ -14,6 +14,20 @@ body {
 .title {
     color: white;
     font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+}
+
+.title__text {
+    padding-left: 0.5rem;
+}
+
+.white {
+    fill: #fff;
+}
+
+.brand-simon {
+    width: 70px;
 }
 
 header {
@@ -53,7 +67,6 @@ main {
     grid-template-rows: repeat(2, calc(180px - 2rem));
     gap: 50px;
 }
-
 
 .console__cell__btn {
     border: none;
@@ -149,78 +162,6 @@ main {
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    gap: 1rem;
-}
-
-.pay-attention, .play {
-    position: relative;
-    margin:0;
-}
-
-.hide {
-    opacity: 0;
-}
-
-.pay-attention::before {
-    content: 'Atención';
-    color: #ce1414;
-    text-shadow: 1px 1px 1px hsl(0deg 100% 50% / 100%), 1px 1px 24px hsl(0deg 100% 65%);
-    position:absolute;
-    filter: blur(25px);
-}
-
-.pay-attention::after {
-    content: 'Atención';
-    color: #ce1414;
-    text-shadow: 1px 1px 1px #7a0808,
-        1px 2px 1px #7a0808,
-        1px 3px 1px #7a0808,
-        1px 4px 1px #7a0808,
-        1px 5px 1px #7a0808,
-        1px 6px 1px #7a0808,
-        1px 7px 1px #7a0808,
-        1px 8px 1px #7a0808,
-        1px 9px 1px #7a0808,
-        1px 10px 1px #7a0808,
-    1px 18px 6px rgba(16,16,16,0.4),
-    1px 22px 10px rgba(16,16,16,0.2),
-    1px 25px 35px rgba(16,16,16,0.2),
-    1px 30px 60px rgba(16,16,16,0.4);
-    position:absolute;
-    z-index: 1;
-    left: 0;
-    top: 0;
-}
-
-.play::before {
-    content: 'Jugar';
-    color: #087a10;
-    text-shadow: 1px 1px 1px #0eaf19, 1px 1px 24px #0eaf19;
-    position:absolute;
-    filter: blur(25px);
-}
-
-.play::after {
-    content: 'Jugar';
-    color: #0eaf19;
-    text-shadow: 1px 1px 1px #087a10,
-        1px 2px 1px #087a10,
-        1px 3px 1px #087a10,
-        1px 4px 1px #087a10,
-        1px 5px 1px #087a10,
-        1px 6px 1px #087a10,
-        1px 7px 1px #087a10,
-        1px 8px 1px #087a10,
-        1px 9px 1px #087a10,
-        1px 10px 1px #087a10,
-    1px 18px 6px rgba(16,16,16,0.4),
-    1px 22px 10px rgba(16,16,16,0.2),
-    1px 25px 35px rgba(16,16,16,0.2),
-    1px 30px 60px rgba(16,16,16,0.4);
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    top: 0;
 }
 
 .console__back {
@@ -288,6 +229,90 @@ main {
     filter: blur(3px);
 }
 
+.console__messages__states {
+    padding: 1rem 1rem 2rem;  
+}
+
+.console__messages__states h3 {
+    position: relative;
+    margin:0;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.console__messages__states.play {
+    border-radius: 1rem 0 0 1rem;
+    background: radial-gradient(circle, rgb(81 233 21 / 50%) 4%, rgba(54,152,15,1) 100%);
+}
+
+.console__messages__states.pay-attention {
+    border-radius: 0 1rem 1rem 0;
+    background-color: #ce1414;
+}
+
+.console__messages__states.pay-attention h3::before {
+    content: 'Atención';
+    color: #ce1414;
+    text-shadow: 1px 1px 1px hsl(0deg 100% 50% / 100%), 1px 1px 24px hsl(0deg 100% 65%);
+    position:absolute;
+    filter: blur(25px);
+}
+
+.console__messages__states.pay-attention h3::after {
+    content: 'Atención';
+    color: #ce1414;
+    text-shadow: 1px 1px 1px #7a0808,
+        1px 2px 1px #7a0808,
+        1px 3px 1px #7a0808,
+        1px 4px 1px #7a0808,
+        1px 5px 1px #7a0808,
+        1px 6px 1px #7a0808,
+        1px 7px 1px #7a0808,
+        1px 8px 1px #7a0808,
+        1px 9px 1px #7a0808,
+        1px 10px 1px #7a0808,
+    1px 18px 6px rgba(16,16,16,0.4),
+    1px 22px 10px rgba(16,16,16,0.2),
+    1px 25px 35px rgba(16,16,16,0.2),
+    1px 30px 60px rgba(16,16,16,0.4);
+    position:absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+
+.console__messages__states.play h3::before {
+    content: 'Jugar';
+    color: #087a10;
+    text-shadow: 1px 1px 1px #0eaf19, 1px 1px 24px #0eaf19;
+    position:absolute;
+    filter: blur(25px);
+}
+
+.console__messages__states.play h3::after {
+    content: 'Jugar';
+    color: #0eaf19;
+    text-shadow: 1px 1px 1px #087a10,
+        1px 2px 1px #087a10,
+        1px 3px 1px #087a10,
+        1px 4px 1px #087a10,
+        1px 5px 1px #087a10,
+        1px 6px 1px #087a10,
+        1px 7px 1px #087a10,
+        1px 8px 1px #087a10,
+        1px 9px 1px #087a10,
+        1px 10px 1px #087a10,
+    1px 18px 6px rgba(16,16,16,0.4),
+    1px 22px 10px rgba(16,16,16,0.2),
+    1px 25px 35px rgba(16,16,16,0.2),
+    1px 30px 60px rgba(16,16,16,0.4);
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
 
 .texture::before {
     content: '';
