@@ -43,6 +43,8 @@ export default class GameConsole {
             this.#trigger(currentButton.value);
         } else {
             this.unblock();
+            this.waitingStateDisplay();
+            this.playStateDisplay();
         }
     }
 
@@ -73,6 +75,16 @@ export default class GameConsole {
             btn.removeAttribute('disabled');
             btn.addEventListener('click', this.#notifyHandler);
         });
+    }
+
+    playStateDisplay() {
+        const stateDisplay = document.querySelector('.console__messages');
+        stateDisplay.classList.toggle('play-state');
+    }
+
+    waitingStateDisplay() {
+        const stateDisplay = document.querySelector('.console__messages');
+        stateDisplay.classList.toggle('waiting-state');
     }
 
     #getRandomInt(max) {

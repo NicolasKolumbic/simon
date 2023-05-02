@@ -1,0 +1,33 @@
+fieldset {
+    border: none;
+    padding:0;
+}
+
+.field {
+    margin: 0.75rem 0;
+}
+
+input[type=date]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
+
+input[type=date]:focus::-webkit-datetime-edit {
+    color: var(--primary) !important;
+    font-weight: 500;
+}
+
+::-webkit-calendar-picker-indicator {
+    appearance: none;
+    display: none;
+}
+
+.calendar {
+    position: relative;
+}
+
+.calendar::before {
+    content: '📅';
+    position: absolute;
+    top: 25%;
+    right: 3px;
+}

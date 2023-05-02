@@ -1,0 +1,22 @@
+dialog {
+    border:none;
+    min-height: 300px;
+    min-width: 400px;
+    transform: scale(0);
+    transform-origin: center center;
+    transition: transform 1s;
+}
+
+dialog::backdrop {
+    background-color:rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+dialog[open]::backdrop {
+    opacity: 1;
+}
+
+dialog[open] {
+    transform: scale(1);
+}
