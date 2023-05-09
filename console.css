@@ -7,12 +7,16 @@
 }
 
 .console {
-    display: grid;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     height: 100%;
-    grid-template-columns: repeat(2, calc(180px - 2rem));
-    grid-template-rows: repeat(2, calc(180px - 2rem));
     gap: 50px;
+    width: 100%;
+}
+
+.console__cell {
+    width: 250px;
+    height: 250px;
 }
 
 .console__cell__btn {
@@ -339,9 +343,5 @@
         width: 550px;
         transform: rotateX(240deg) rotateZ(76deg) translate3d(0px, 0px, -82px);
     }
-
-    .console {
-        grid-template-columns: repeat(2, calc(282px - 2rem));
-        grid-template-rows: repeat(2, calc(280px - 2rem));
-    }  
+ 
 }
