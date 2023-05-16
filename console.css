@@ -1,22 +1,25 @@
 .console-wrapper {  
-    width: 380px;   
+    width: 276px;   
     position: absolute;    
     border-radius: 50%;   
     padding: 2rem;   
     transform-origin: 50% 50% 0;
+    transform: rotateX(0deg) rotateZ(0deg) translate3d(0px, 0px, 0px);
+    transition: transform 1s, width 1s;
 }
 
 .console {
     display: flex;
     flex-wrap: wrap;
     height: 100%;
-    gap: 50px;
+    gap: 36px;
     width: 100%;
 }
 
 .console__cell {
-    width: 250px;
-    height: 250px;
+    width: 120px;
+    height: 120px;
+    transition: width 1s, height 1s;
 }
 
 .console__cell__btn {
@@ -101,6 +104,7 @@
     bottom: 0;
     background: hsl(199 73% 16% / 1) linear-gradient(45deg, rgba(255,255,255,0) 22%, rgb(255 255 255 / 10%) 100%);
     z-index: 2;
+    display: none;
 }
 
 .console__messages {
@@ -119,6 +123,7 @@
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+    display: none;
 }
 
 .console__back {
@@ -128,7 +133,7 @@
     width: 100%;
     height: 100%;
     top: -15px;
-    left: -45px;
+    left: -30px;
     transform: scale3d(0.9, 0.9, 0.9);
 }
 
@@ -139,7 +144,7 @@
     width: 100%;
     height: 100%;
     top: -15px;
-    left: -55px;
+    left: -45px;
     transform: scale3d(0.95,0.95,0.95);
     box-shadow: -6px 0px 8px 0px rgba(0,0,0,0.2);
 }
@@ -342,6 +347,23 @@
     .console-wrapper {
         width: 550px;
         transform: rotateX(240deg) rotateZ(76deg) translate3d(0px, 0px, -82px);
+    }
+
+    .console__cell {
+        width: 250px;
+        height: 250px;
+    }
+
+    .console {
+        gap: 50px;
+    }
+
+    .console__back {
+        width: -55px;
+    }
+
+    .console__back {
+        width: -45px;
     }
  
 }
