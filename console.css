@@ -1,5 +1,4 @@
 .console-container {   
-    position: absolute;     
     transform-origin: 50% 50% 0;
     transform: rotateX(0deg) translate3d(0px, 0px, 0px);
     transition: transform 1s;
@@ -422,6 +421,7 @@
 
 @container wrapper (min-width: 992px) {
     .console-container {
+        position: absolute;
         transform: rotateX(55deg) translate3d(0px, -190px, -82px);
     }
 

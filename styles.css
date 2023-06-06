@@ -55,6 +55,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 0 1rem;
+    margin-bottom: 1rem;
 }
 
 .navbar {
@@ -228,6 +229,10 @@ footer div {
     100%{
         transform: translateY(3px);
     }
+}
+
+@media screen () {
+    
 }
 
 
