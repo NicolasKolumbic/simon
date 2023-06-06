@@ -16,6 +16,10 @@
     width: 100%;
 }
 
+.console__row {
+    width:100%;
+}
+
 .console__cell {
     width: 120px;
     height: 120px;
