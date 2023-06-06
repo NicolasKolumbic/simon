@@ -23,10 +23,10 @@
                 <ul class="reset-list navbar">
                     <li>
                         <button type="button" id="setting-btn" class="transparent-btn">
-                            <img src="images/settings-icon.svg" class="icon"/>
+                            <img src="images/settings-icon.svg" class="icon" />
                         </button>
                     </li>
-                   
+
                 </ul>
             </nav>
         </header>
@@ -36,7 +36,8 @@
                     <span>Jugar</span>
                 </button>
                 <div class="message game-over">
-                    <h4 class="game-over__message message-header"><span class="game-over__devil">😈</span> Game Over</h4>
+                    <h4 class="game-over__message message-header"><span class="game-over__devil">😈</span> Game Over
+                    </h4>
                     <button class="btn-game btn-restart" type="button">
                         Intentalo nuevamente
                     </button>
@@ -44,47 +45,50 @@
                 <h4 class="congratulation message message-header">👍 Bien hecho!</h4>
                 <div class="next-level message">
                     <h4 class="message-header">
-                        ¡Excelente, continuemos al siguiente nivel! 
+                        ¡Excelente, continuemos al siguiente nivel!
                     </h4>
                     <button class="btn-game btn-next" type="button">
                         Siguiente
                     </button>
                 </div>
             </section>
-            <section class="console-wrapper blocked">
-                <div class="console__shadow"></div>
-                <div class="console__base shine texture"></div>
-                <div class="console__back texture"></div>
-                <div class="console__skin shine texture">
-                </div>
+            <section class="console-container blocked">
                 <div class="console">
-                    <div class="console__cell">
-                        <button class="console__cell__btn blue" id="blue" type="button" disabled></button>
+                    <div class="console__shadow"></div>
+                    <div class="base base-shadow"></div>
+                    <div class="console__bottom-box shine texture"></div>
+                    <div class="console__middle texture"></div>
+                    <div class="console__top-box texture shine">
+                        <div class="light-effects shadow light"></div>
                     </div>
-                    <div class="console__cell">
-                        <button class="console__cell__btn red" id="red" type="button" disabled></button>
+                    <div class="console__button-set">
+                        <div class="console__cell blue">
+                            <button class="console__cell__btn" id="blue" type="button" disabled></button>
+                        </div>
+                        <div class="console__cell red">
+                            <button class="console__cell__btn" id="red" type="button" disabled></button>
+                        </div>
+                        <div class="console__cell yellow">
+                            <button class="console__cell__btn" id="yellow" type="button" disabled></button>
+                        </div>
+                        <div class="console__cell  green">
+                            <button class="console__cell__btn" id="green" type="button" disabled></button>
+                        </div>
                     </div>
-                    <div class="console__cell">
-                        <button class="console__cell__btn yellow" id="yellow" type="button" disabled></button>
-                    </div>
-                    <div class="console__cell">
-                        <button class="console__cell__btn green" id="green" type="button" disabled></button>
+                    <div class="console__front texture"></div>
+                    <div class="console__messages">
+                        <div class="console__messages__states play">
+                            <h3 class="play">
+                                <span>Jugar</span>
+                            </h3>
+                        </div>
+                        <div class="console__messages__states pay-attention">
+                            <h3 class="pay-attention">
+                                <span>Atención</span>
+                            </h3>
+                        </div>
                     </div>
                 </div>
-                <div class="console__front texture"></div>
-                <div class="console__messages">
-                    <div class="console__messages__states play">
-                        <h3 class="play">
-                            <span>Jugar</span>
-                        </h3>
-                    </div>
-                    <div class="console__messages__states pay-attention">
-                        <h3 class="pay-attention">
-                            <span>Atención</span>
-                        </h3>
-                    </div>
-                </div>
-
             </section>
         </main>
         <footer>
