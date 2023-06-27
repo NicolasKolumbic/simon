@@ -27,6 +27,10 @@
     transform: scale(0.9);
 }
 
+.console__row {
+    width:100%;
+}
+
 .console__cell {
     width: 50%;
     height: 50%;
