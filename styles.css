@@ -55,7 +55,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 0 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
 }
 
 .navbar {
@@ -85,17 +85,19 @@ footer {
     padding:1rem;
 }
 
-footer div {
+.credits {
     border-top: 1px dashed white;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     padding-top: 1rem;
+    align-items: flex-end;
 }
 
 .credits__subject {
     color:white;
     font-family: 'Open Sans';
     font-weight: 400;
+    margin: 0 0 0.75rem 0;
 }
 
 .brand {
@@ -231,8 +233,21 @@ footer div {
     }
 }
 
-@media screen () {
-    
+@media screen and (min-width: 992px) {
+    header {
+        margin:0;
+        margin-bottom: 1rem;
+    }
+
+    .credits {
+        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .credits .credits__subject {
+        order: 1;
+    }
 }
 
 

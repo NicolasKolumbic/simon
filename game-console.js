@@ -6,10 +6,10 @@ export default class GameConsole {
     #iterator = null;
     #notifyHandler = null;
     
-    #green = document.querySelector('.green');
-    #red = document.querySelector('.red');
-    #blue = document.querySelector('.blue');
-    #yellow = document.querySelector('.yellow');
+    #green = document.querySelector('#green');
+    #red = document.querySelector('#red');
+    #blue = document.querySelector('#blue');
+    #yellow = document.querySelector('#yellow');
 
 
     constructor() {
@@ -62,7 +62,7 @@ export default class GameConsole {
     }
 
     block() {
-        document.querySelector('.console-wrapper').classList.add('blocked');
+        document.querySelector('.console-container').classList.add('blocked');
         this.#buttons.forEach((btn) => {
             btn.setAttribute('disabled', true);
             btn.removeEventListener('click', this.#notifyHandler);
@@ -70,7 +70,7 @@ export default class GameConsole {
     }
 
     unblock() {
-        document.querySelector('.console-wrapper').classList.remove('blocked');
+        document.querySelector('.console-container').classList.remove('blocked');
         this.#buttons.forEach((btn) => {
             btn.removeAttribute('disabled');
             btn.addEventListener('click', this.#notifyHandler);

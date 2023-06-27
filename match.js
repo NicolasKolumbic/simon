@@ -5,7 +5,7 @@ import Form from "./form.js";
 
 export default class Match {
 
-    #nivel = 3;
+    #nivel = 1;
     
     #console = null;
     #userMessages = null;

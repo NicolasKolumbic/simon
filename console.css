@@ -120,17 +120,16 @@
 
 .console__front {
     position: absolute;
-    width: 60%;
-    height: 60%;
+    width: 55%;
+    height: 55%;
     border-radius: 50%;
     left: 0;
     top: 0;
     right: 0;
     margin: auto;
     bottom: 0;
-    background: hsl(199 73% 16% / 1) linear-gradient(45deg, rgba(255,255,255,0) 22%, rgb(255 255 255 / 10%) 100%);
+    background: linear-gradient(55deg, hsl(199deg 75.91% 10.49%) 5%, hsl(199deg 67.64% 28.55%) 130%);
     z-index: 2;
-    display: none;
 }
 
 .console__messages {
@@ -245,10 +244,9 @@
     width: 100%;
     height: 100%;
     border-bottom: 6px solid rgba(0,0,0, 0.7);
-    border-left: 6px solid rgba(0,0,0, 0.7);
     position: absolute;
     border-radius: 50%;
-    transform: scale(0.99) rotate(10deg);
+    transform: scale(0.97) rotate(10deg);
     filter: blur(3px);
 }
 
@@ -444,6 +442,11 @@
 
     .base-shadow::before {
         transform: translate(0px, 56px);
+    }
+
+    .shadow::before {
+        border-left: 6px solid rgba(0,0,0, 0.7);
+        transform: scale(0.99) rotate(10deg);
     }
     
  
