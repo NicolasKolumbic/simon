@@ -1,6 +1,6 @@
-import Match from './match.js';
 
-window.addEventListener('DOMContentLoaded', (event) => {
+
+window.addEventListener('DOMContentLoaded', function(event) {
     const game = new Match();
 });
 

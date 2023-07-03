@@ -1,47 +1,50 @@
-import GameConsole from "./game-console.js";
-import Sequence from "./sequence.js";
-import UserMessage from "./user-messages.js";
-import Form from "./form.js";
+ var Match = (function() {
 
-export default class Match {
-
-    #nivel = 1;
-    
-    #console = null;
-    #userMessages = null;
-    #form = null;
-
-    constructor() {
-        this.#userMessages = new UserMessage();
-        this.#console = new GameConsole();
-        this.#form = new Form();
-        this.#userMessages.startButton.addEventListener('click', this.#play.bind(this));
-        this.#userMessages.nextLevel.addEventListener('click', this.#nextLevel.bind(this))
+    function Match() {
+        this.nivel = 1;
+        this.console = null;
+        this.userMessage = null;
+        this.form = null;
+        init.call(this);
     }
 
-    #play() {
-        this.#userMessages.hide(this.#userMessages.startButton);
-        this.#console.waitingStateDisplay();
-        this.newLevel();
+    function nextLevel() {
+        this.userMessages.hide(this.userMessages.nextLevel);
+        this.nivel++;
+        newLevel.call(this);
     }
 
-    #nextLevel() {
-        this.#userMessages.hide(this.#userMessages.nextLevel);
-        this.#nivel++;
-        this.newLevel();
+    function restart() {
+        this.userMessages.hide(this.userMessages.gameOver);
+        this.nivel = 1;
+        newLevel.call(this);
     }
 
-    newLevel() {
-        let counter = this.#nivel;
-        const sequence = new Sequence(this.#userMessages, this.#console);
+    function play() {
+        this.userMessages.hide(this.userMessages.startButton);
+        newLevel.call(this);
+    }
+
+    function newLevel() {
+        let counter = this.nivel;
+        const sequence = new Sequence(this.userMessages, this.console);
 
         while(counter--) {
-            const button = this.#console.getRandomButton();
+            const button = this.console.getRandomButton();
             sequence.add(button);
         }
 
-        this.#console.execute(sequence);  
+        this.console.execute(sequence);  
     }
 
-   
-}
+    function init() {
+        this.userMessages = new UserMessage();
+        this.console = new GameConsole();
+        this.form = new Form();
+        this.userMessages.startButton.addEventListener('click', play.bind(this));
+        this.userMessages.nextLevel.addEventListener('click', nextLevel.bind(this));
+        this.userMessages.restart.addEventListener('click', restart.bind(this));
+    }
+
+    return Match
+})();

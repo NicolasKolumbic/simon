@@ -1,39 +1,40 @@
-export default class Sequence {
-    #buttonList = [];
-    #userButtonList = [];
-    #userMessages = null;
-    #console = null;
+var Sequence = (function(){
 
-    constructor(userMessages, gameConsole) {
-        this.#userMessages = userMessages;
-        this.#console = gameConsole;
+    function Sequence(userMessages, gameConsole) {
+        this.buttonList = [];
+        this.userButtonList = [];
+        this.userMessages = userMessages;
+        this.console = gameConsole;
     }
 
-    get iterator() {
-        return this.#buttonList[Symbol.iterator]();
+    Sequence.prototype.add = function(button) {
+        this.buttonList.push(button);
+    };
+
+    Sequence.prototype.getIterator = function() {
+        return new Iterator(this.buttonList);
     }
 
-    add(button) {
-        this.#buttonList.push(button);
-    }
-
-    isValid(userButton) {
-        this.#userButtonList.push(userButton);
-        const step = this.#userButtonList.length - 1;
-        const button = this.#buttonList[step];
+    Sequence.prototype.isValid = function(userButton) {
+        this.userButtonList.push(userButton);
+        const step = this.userButtonList.length - 1;
+        const button = this.buttonList[step];
 
         if(button.id !== userButton.id) {
-            this.#userMessages.hide(this.#userMessages.congratulation);
-            this.#userMessages.show(this.#userMessages.gameOver, 700);
-            this.#console.block();
+            this.userMessages.hide(this.userMessages.congratulation);
+            this.userMessages.show(this.userMessages.gameOver, 700);
+            this.console.block();
         } else {
-            if(this.#userButtonList.length === this.#buttonList.length) {
-                this.#userMessages.hide(this.#userMessages.congratulation);
-                this.#userMessages.show(this.#userMessages.nextLevel, 700);
-                this.#console.block();
+            if(this.userButtonList.length === this.buttonList.length) {
+                this.userMessages.hide(this.userMessages.congratulation);
+                this.userMessages.show(this.userMessages.nextLevel, 700);
+                this.console.block();
             } else {
-                this.#userMessages.show(this.#userMessages.congratulation);
+                this.userMessages.show(this.userMessages.congratulation);
             }
         }
     }
-}
+
+    return Sequence;
+
+})();

@@ -1,25 +1,30 @@
-export default class UserMessage {
+var UserMessage = (function(){
+    var frames = { transform: ['scale(0)','scale(1.1)','scale(1)'] };
 
-    #frames = { transform: ['scale(0)','scale(1.1)','scale(1)'] };
-
-    #setting = {
+    var setting = {
         duration: 700,
         fill: "forwards",
         easing: "ease-out"
     };
 
-    constructor() {
+    function UserMessage() {
         this.gameOver = document.querySelector('.game-over');
         this.congratulation = document.querySelector('.congratulation');
         this.startButton = document.querySelector('.btn-start');
         this.nextLevel = document.querySelector('.next-level');
+        this.restart = document.querySelector('.btn-restart');
     }
 
-    show(element, delay = 0) {
-        element.animate(this.#frames, {...this.#setting, delay});
+    UserMessage.prototype.show = function(element, delay) {
+        var _delay = delay || 0;
+        element.animate(frames, Object.assign({}, setting, {delay: _delay}));
     }
 
-    hide(element, delay = 0) {
-        element.animate(this.#frames, {...this.#setting, direction: 'reverse', delay});
+    UserMessage.prototype.hide = function(element, delay) {
+        var _delay = delay || 0;
+        element.animate(frames, Object.assign({}, setting, {delay: _delay, direction: 'reverse'}));
     }
-}
+
+    return UserMessage;
+
+})();

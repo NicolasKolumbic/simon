@@ -1,95 +1,90 @@
-export default class GameConsole {
+var GameConsole = (function(){
+
+    var greenButton = document.querySelector('#green');
+    var redButton = document.querySelector('#red');
+    var blueButton = document.querySelector('#blue');
+    var yellowButton = document.querySelector('#yellow');
+    var clickHandler;
     
-    #max = 4;
-    #buttons = []
-    #sequence = null;
-    #iterator = null;
-    #notifyHandler = null;
-    
-    #green = document.querySelector('#green');
-    #red = document.querySelector('#red');
-    #blue = document.querySelector('#blue');
-    #yellow = document.querySelector('#yellow');
-
-
-    constructor() {
-       this.dateGame = new Date().toDateString();
-       this.#notifyHandler = this.#notify.bind(this);
-
-       this.#buttons.push(this.#green);
-       this.#buttons.push(this.#red);
-       this.#buttons.push(this.#blue);
-       this.#buttons.push(this.#yellow);
+    function GameConsole() {
+        this.max = 4;
+        this.buttons = []
+        this.sequence = null;
+        this.iterator = null;
+        init.call(this);
     }
 
-    #trigger(button) {
+    function trigger(button) {
         const animation = button.animate({ opacity: [0, 1, 0] }, {
             duration: 1000,
             pseudoElement: '::after'
         });
 
-        animation.addEventListener('finish', this.#run.bind(this))
+        animation.addEventListener('finish', run.bind(this))
     }
 
-    #notify(event) {
+    function notify(event) {
         const button = event.target;
-        this.#sequence.isValid(button);
+        this.sequence.isValid(button);
     }
 
-    #run() {
-        let currentButton = this.#iterator.next();
+    function run() {
+        let currentButton = this.iterator.next();
 
         if(!currentButton.done) {
-            this.#trigger(currentButton.value);
+            trigger.call(this, currentButton.value);
         } else {
-            this.unblock();
-            this.waitingStateDisplay();
-            this.playStateDisplay();
+            unblock.call(this);
         }
     }
 
-    getRandomButton() {
-        const index = this.#getRandomInt(this.#max);
-        return this.#buttons[index];
-    }
-
-    execute(sequence) {
-
-        this.#sequence = sequence;
-        this.#iterator = sequence.iterator;
-
-        this.#run();
-    }
-
-    block() {
-        document.querySelector('.console-container').classList.add('blocked');
-        this.#buttons.forEach((btn) => {
-            btn.setAttribute('disabled', true);
-            btn.removeEventListener('click', this.#notifyHandler);
-        });
-    }
-
-    unblock() {
-        document.querySelector('.console-container').classList.remove('blocked');
-        this.#buttons.forEach((btn) => {
-            btn.removeAttribute('disabled');
-            btn.addEventListener('click', this.#notifyHandler);
-        });
-    }
-
-    playStateDisplay() {
-        const stateDisplay = document.querySelector('.console__messages');
-        stateDisplay.classList.toggle('play-state');
-    }
-
-    waitingStateDisplay() {
-        const stateDisplay = document.querySelector('.console__messages');
-        stateDisplay.classList.toggle('waiting-state');
-    }
-
-    #getRandomInt(max) {
+    function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
-}
+    function block() {
+        document.querySelector('.console-container').classList.add('blocked');
+        var _this = this;
+        this.buttons.forEach(function (btn) {
+            btn.setAttribute('disabled', true);
+            btn.removeEventListener('click', clickHandler);
+        });
+    }
+
+    function unblock() {
+        document.querySelector('.console-container').classList.remove('blocked');
+        this.buttons.forEach(function(btn) {
+            btn.removeAttribute('disabled');
+            btn.addEventListener('click', clickHandler);
+        });
+    }
+
+    function init () {
+        this.dateGame = new Date().toDateString();
+        clickHandler = notify.bind(this);
+ 
+        this.buttons.push(greenButton);
+        this.buttons.push(redButton);
+        this.buttons.push(blueButton);
+        this.buttons.push(yellowButton);
+    }
+
+    GameConsole.prototype.getRandomButton = function() {
+        var index = getRandomInt(this.max);
+        return this.buttons[index];
+    }
+
+    GameConsole.prototype.execute = function(sequence) {
+        this.sequence = sequence;
+        this.iterator = sequence.getIterator();
+
+        run.call(this);
+    }
+
+    GameConsole.prototype.block = block;
+
+    GameConsole.prototype.unblock = unblock;
+
+    return GameConsole;
+})();
 
