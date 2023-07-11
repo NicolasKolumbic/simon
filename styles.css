@@ -17,6 +17,7 @@ html {
 body {
       height: 100%;
       margin:0;
+      min-width: 400px;
       background-image: linear-gradient(to right, #8360c3, #2ebf91);
       font-family: 'Passion One', cursive;
 }
@@ -66,7 +67,7 @@ header {
     color: white;
     display: inline-flex;
     align-items: center;
-    gap: 2rem;
+    gap: 0.5rem;
     font-family: 'Open Sans';
     font-weight: 300;
 }
@@ -82,7 +83,7 @@ header {
 
 .label + span {
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
 }
 
@@ -175,10 +176,6 @@ footer {
 
 .icon {
     width: 25px;
-}
-
-.navbar {
-    margin-top: 1rem;
 }
 
 .btn-game {
@@ -275,6 +272,15 @@ footer {
 
     .credits .credits__subject {
         order: 1;
+    }
+
+    .navbar{
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    .label + span {
+        font-size: 1.5rem;
     }
 }
 
