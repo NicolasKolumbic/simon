@@ -1,0 +1,16 @@
+.board__timer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10px;
+    width: 180px;
+    margin: auto;
+}
+
+.board__timer::before {
+    content: '';
+    height: 5px;
+    width: 0;
+    display: block;
+    background: linear-gradient(to right,rgba(168,73,163,1) 0%,rgba(200,94,199,1) 47%, rgba(229,112,231,1) 100%);
+}

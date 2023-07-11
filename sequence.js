@@ -1,38 +1,33 @@
 var Sequence = (function(){
 
-    function Sequence(userMessages, gameConsole) {
+    function Sequence() {
         this.buttonList = [];
-        this.userButtonList = [];
-        this.userMessages = userMessages;
-        this.console = gameConsole;
+        this._iterator = null;
+
+        Object.defineProperty(this, "count", {
+            get: function () {return this.buttonList.length;}
+        });
+
+        Object.defineProperty(this, "last", {
+            get: function () {return this.buttonList[this.buttonList.length - 1];}
+        });
+
+        Object.defineProperty(this, "iterator", {
+            get: function () {return getIterator.call(this)}
+        });
     }
 
-    Sequence.prototype.add = function(button) {
-        this.buttonList.push(button);
+    function getIterator() {
+        this._iterator = this._iterator ? this._iterator : new Iterator(this.buttonList);
+        return this._iterator;
+    }
+
+    Sequence.prototype.add = function(buttonId) {
+        this.buttonList.push(buttonId);
     };
 
-    Sequence.prototype.getIterator = function() {
-        return new Iterator(this.buttonList);
-    }
-
-    Sequence.prototype.isValid = function(userButton) {
-        this.userButtonList.push(userButton);
-        const step = this.userButtonList.length - 1;
-        const button = this.buttonList[step];
-
-        if(button.id !== userButton.id) {
-            this.userMessages.hide(this.userMessages.congratulation);
-            this.userMessages.show(this.userMessages.gameOver, 700);
-            this.console.block();
-        } else {
-            if(this.userButtonList.length === this.buttonList.length) {
-                this.userMessages.hide(this.userMessages.congratulation);
-                this.userMessages.show(this.userMessages.nextLevel, 700);
-                this.console.block();
-            } else {
-                this.userMessages.show(this.userMessages.congratulation);
-            }
-        }
+    Sequence.prototype.isInvalid = function(buttonId, index) {
+        return this.buttonList[index] !== buttonId; 
     }
 
     return Sequence;

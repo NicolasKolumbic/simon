@@ -1,30 +1,45 @@
-var UserMessage = (function(){
-    var frames = { transform: ['scale(0)','scale(1.1)','scale(1)'] };
+var UserMessages = (function(){
+    var _frames = { transform: ['scale(0)','scale(1.1)','scale(1)']};
 
-    var setting = {
+    var _setting = {
         duration: 700,
         fill: "forwards",
         easing: "ease-out"
     };
 
-    function UserMessage() {
-        this.gameOver = document.querySelector('.game-over');
-        this.congratulation = document.querySelector('.congratulation');
-        this.startButton = document.querySelector('.btn-start');
-        this.nextLevel = document.querySelector('.next-level');
-        this.restart = document.querySelector('.btn-restart');
+    function isVisible(element) {
+        return getComputedStyle(element).display === 'block';
     }
 
-    UserMessage.prototype.show = function(element, delay) {
-        var _delay = delay || 0;
-        element.animate(frames, Object.assign({}, setting, {delay: _delay}));
+    function show(element, delay) {
+        if(!isVisible(element)) {
+            var _delay = delay || 0;
+            element.classList.add('in');
+            element.animate(_frames, Object.assign({}, _setting, {delay: _delay}));
+        }  
     }
 
-    UserMessage.prototype.hide = function(element, delay) {
-        var _delay = delay || 0;
-        element.animate(frames, Object.assign({}, setting, {delay: _delay, direction: 'reverse'}));
+    function hide(element, delay) {
+        if(isVisible(element)) {
+            var _delay = delay || 0;
+        
+            var animation = element.animate(_frames, Object.assign({}, _setting, {delay: _delay, direction: 'reverse'}));
+
+            animation.addEventListener('finish', function() {
+                element.classList.remove('in');
+            });
+        }
+        
     }
 
-    return UserMessage;
+    return {
+        hide: hide,
+        show: show,
+        gameOver : document.querySelector('.game-over'),
+        congratulation : document.querySelector('.congratulation'),
+        startButton : document.querySelector('.btn-start'),
+        nextLevel : document.querySelector('.next-level'),
+        restart : document.querySelector('.btn-restart'),
+    };
 
 })();

@@ -1,50 +1,91 @@
  var Match = (function() {
 
-    function Match() {
-        this.nivel = 1;
-        this.console = null;
-        this.userMessage = null;
-        this.form = null;
-        init.call(this);
+    var _sequence = null;
+    var _player = null;
+    var _pointByNivel = 10;
+    var _match = {
+        addSequenceValue: validate
     }
 
     function nextLevel() {
-        this.userMessages.hide(this.userMessages.nextLevel);
-        this.nivel++;
-        newLevel.call(this);
+        UserMessages.hide(UserMessages.nextLevel);
+        _player.nivel++;
+        _player.sequence = new Sequence();
+        Board.set('nivel', _player.nivel);
+        Timer.nivel(_player.nivel);
+        newLevel();
     }
 
     function restart() {
-        this.userMessages.hide(this.userMessages.gameOver);
-        this.nivel = 1;
-        newLevel.call(this);
+        UserMessages.hide(UserMessages.gameOver);
+        _player.nivel = 1;
+        newLevel();
     }
 
     function play() {
-        this.userMessages.hide(this.userMessages.startButton);
-        newLevel.call(this);
+        UserMessages.hide(UserMessages.startButton);
+        newLevel();
     }
 
     function newLevel() {
-        let counter = this.nivel;
-        const sequence = new Sequence(this.userMessages, this.console);
+        var counter = _player.nivel;
+        _sequence = new Sequence();
 
         while(counter--) {
-            const button = this.console.getRandomButton();
-            sequence.add(button);
+            const buttonId = GameConsole.getRandomButton();
+            _sequence.add(buttonId);
         }
 
-        this.console.execute(sequence);  
+        GameConsole.execute(_sequence);  
+    }
+
+    function validate(buttonId) {     
+        var currentIndex = _player.sequence.count - 1;
+
+        if(_sequence.isInvalid(buttonId, currentIndex)) {
+            UserMessages.hide(UserMessages.congratulation);
+            UserMessages.show(UserMessages.gameOver, 700);
+            GameConsole.block();
+            Timer.cancel();
+        } else {
+            if(_sequence.count === _player.sequence.count) {
+                UserMessages.hide(UserMessages.congratulation);
+                UserMessages.show(UserMessages.nextLevel, 700);
+                GameConsole.block();
+                _player.addPoints((_player.nivel * _pointByNivel));
+                Board.set('points', _player.points);
+                Timer.cancel();          
+            } else {
+                UserMessages.show(UserMessages.congratulation);
+            }  
+        }   
+    }
+
+    function executionFinishHandler() {
+        Timer.start();
+    }
+
+    function finishedTime(state) {
+        if(state === 'finish'){
+            UserMessages.show(UserMessages.gameOver, 700);
+            GameConsole.block();
+        }
     }
 
     function init() {
-        this.userMessages = new UserMessage();
-        this.console = new GameConsole();
         this.form = new Form();
-        this.userMessages.startButton.addEventListener('click', play.bind(this));
-        this.userMessages.nextLevel.addEventListener('click', nextLevel.bind(this));
-        this.userMessages.restart.addEventListener('click', restart.bind(this));
+        _player = new Player();
+        Timer.subscribe(finishedTime);
+
+        GameConsole.subscribe(_player);
+        GameConsole.subscribe(_match);
+        GameConsole.executionFinish(executionFinishHandler);
+        
+        UserMessages.startButton.addEventListener('click', play);
+        UserMessages.nextLevel.addEventListener('click', nextLevel);
+        UserMessages.restart.addEventListener('click', restart);
     }
 
-    return Match
+    return {init: init};
+
 })();
