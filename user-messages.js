@@ -1,5 +1,6 @@
 var UserMessages = (function(){
     var _frames = { transform: ['scale(0)','scale(1.1)','scale(1)']};
+    var _pulseFrames = { transform: ['scale(1)','scale(1.1)','scale(1)']};
 
     var _setting = {
         duration: 700,
@@ -32,9 +33,19 @@ var UserMessages = (function(){
         
     }
 
+    function pulse(element, delay) {
+        if(isVisible(element)) {
+            var _delay = delay || 0;
+
+            element.animate(_pulseFrames, Object.assign({}, _setting, {delay: _delay}));
+        }
+    }
+
     return {
         hide: hide,
         show: show,
+        pulse: pulse,
+        isVisible: isVisible,
         gameOver : document.querySelector('.game-over'),
         congratulation : document.querySelector('.congratulation'),
         startButton : document.querySelector('.btn-start'),

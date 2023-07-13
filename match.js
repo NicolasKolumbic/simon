@@ -19,6 +19,9 @@
     function restart() {
         UserMessages.hide(UserMessages.gameOver);
         _player.nivel = 1;
+        Timer.nivel(_player.nivel);
+        Board.set('nivel', _player.nivel);
+        _player.sequence = new Sequence();
         newLevel();
     }
 
@@ -49,14 +52,18 @@
             Timer.cancel();
         } else {
             if(_sequence.count === _player.sequence.count) {
+                Timer.cancel();          
+                GameConsole.block();
                 UserMessages.hide(UserMessages.congratulation);
                 UserMessages.show(UserMessages.nextLevel, 700);
-                GameConsole.block();
                 _player.addPoints((_player.nivel * _pointByNivel));
                 Board.set('points', _player.points);
-                Timer.cancel();          
             } else {
-                UserMessages.show(UserMessages.congratulation);
+                if(UserMessages.isVisible(UserMessages.congratulation)) {
+                    UserMessages.pulse(UserMessages.congratulation);
+                } else {
+                    UserMessages.show(UserMessages.congratulation);
+                }
             }  
         }   
     }

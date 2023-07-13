@@ -12,12 +12,12 @@
 
 html {
     height: 100%;
+    min-width: 400px;
 }
 
 body {
       height: 100%;
       margin:0;
-      min-width: 400px;
       background-image: linear-gradient(to right, #8360c3, #2ebf91);
       font-family: 'Passion One', cursive;
 }
@@ -43,6 +43,7 @@ body {
 
 .title__text {
     padding-left: 0.5rem;
+    font-size: 1.8rem;
 }
 
 .white {
@@ -50,7 +51,11 @@ body {
 }
 
 .brand-simon {
-    width: 50px;
+    width: 40px;
+}
+
+.title__text {
+    font-size: 2rem;
 }
 
 header {
@@ -262,6 +267,10 @@ footer {
     header {
         margin:0;
         margin-bottom: 1rem;
+    }
+
+    .brand-simon {
+        width: 50px;
     }
 
     .credits {
