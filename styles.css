@@ -180,6 +180,8 @@ footer {
 }
 
 .btn-game {
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
     background-color: transparent;
     border: 1px solid white;
     border-radius: .25rem;
@@ -199,7 +201,7 @@ footer {
     background-color: white;
     border: none;
     color: var(--secondary);
-    font-size: 1.2rem;
+    font-size: 0.9rem;
 }
 
 .btn-game:hover {
@@ -218,7 +220,12 @@ footer {
     margin: 0;
     font-size: 3rem;  
     font-weight: 400;
+    padding: 0 1rem;
     color: white;
+}
+
+.game-over {
+    text-align: center;
 }
 
 .game-over__message {
@@ -289,6 +296,10 @@ footer {
 
     .credits .credits__subject {
         order: 1;
+    }
+
+    .btn-game-second {
+        font-size: 1.2rem;
     }
 
 }
