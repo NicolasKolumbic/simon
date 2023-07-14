@@ -4,10 +4,12 @@
 @import url(google-input.css);
 @import url(modal.css);
 @import url(timer.css);
+@import url(board.css);
 
 
 :root {
     --primary: #59369b;
+    --secondary: #2ebf91;
 }
 
 html {
@@ -65,6 +67,11 @@ header {
     margin: 1rem 0;
 }
 
+nav {
+    display: inline-flex;
+    align-items: center;
+}
+
 .navbar {
     margin:0;
     padding:0;
@@ -77,21 +84,6 @@ header {
     font-weight: 300;
 }
 
-.board__field {
-    display: flex;
-    flex-direction: column;
-}
-
-.label {
-    font-size: 0.785rem;
-}
-
-.label + span {
-    font-weight: 600;
-    font-size: 1.2rem;
-    text-align: center;
-}
-
 .container {
     display: flex;
     flex-direction: column;
@@ -99,12 +91,16 @@ header {
 }
 
 main {
+    flex: 1 1 auto;
+}
+
+main > div {
     perspective: 50em;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1 1 auto;
     position: relative;
+    height: calc(100% - 70px);
     container-type: inline-size;
     container-name: wrapper;
 }
@@ -192,9 +188,18 @@ footer {
     font: 1.5rem 'Schibsted Grotesk', sans-serif;
     padding: 0.25rem 1rem;
     cursor: pointer;
+    text-transform: uppercase;
     transition: transform 0.3s;
     margin-top: 1rem;
     transform: scale(1);
+}
+
+.btn-game-second {
+    margin-top:0;
+    background-color: white;
+    border: none;
+    color: var(--secondary);
+    font-size: 1.2rem;
 }
 
 .btn-game:hover {
@@ -265,12 +270,15 @@ footer {
 
 @media screen and (min-width: 992px) {
     header {
-        margin:0;
-        margin-bottom: 1rem;
+        margin:1rem 0;
     }
 
     .brand-simon {
         width: 50px;
+    }
+
+    main > div {
+        height: 100%;
     }
 
     .credits {
@@ -283,14 +291,6 @@ footer {
         order: 1;
     }
 
-    .navbar{
-        gap: 2rem;
-        margin-top: 1rem;
-    }
-
-    .label + span {
-        font-size: 1.5rem;
-    }
 }
 
 

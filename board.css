@@ -1,0 +1,43 @@
+
+
+ul.board__fields {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    margin-top: 0.75rem;
+    color: white;
+}
+
+.board__field {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 1rem;
+}
+
+.label + span {
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+@media screen and (min-width: 992px) { 
+    .board {
+        position: absolute;
+        inset: 0 210px auto auto;
+    }
+
+    ul.board__fields {
+        display: inline-flex;
+    }
+
+    .label + span {
+        font-size: 1.5rem;
+    }
+}
+
