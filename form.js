@@ -10,10 +10,12 @@ var Form = (function(){
     }
 
     function openModal() {
+        Timer.pause();
         modal.showModal()
     }
 
     function closeModal() {
+        Timer.play();
         modal.close()
     }
 

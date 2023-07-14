@@ -50,7 +50,7 @@ var UserMessages = (function(){
         congratulation : document.querySelector('.congratulation'),
         startButton : document.querySelector('.btn-start'),
         nextLevel : document.querySelector('.next-level'),
-        restart : document.querySelector('.btn-restart'),
+        restartButtons : document.querySelectorAll('.btn-restart'),
     };
 
 })();

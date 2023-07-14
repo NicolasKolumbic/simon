@@ -1,6 +1,6 @@
 var Timer = (function(){
     var animation = null
-    var timer = document.querySelector('.board__timer');
+    var timer = document.querySelector('.timer');
     var endHandler = null;
     var _nivel = 1;
     var reductionFactor = 0.98;
@@ -22,6 +22,7 @@ var Timer = (function(){
 
     function start() {
         var duration = calcDuration();
+        
        animation = timer.animate({ width: [0, '170px'] }, {duration: duration,  pseudoElement: '::before'})
 
        animation.addEventListener('finish', finishHandler)
@@ -32,6 +33,14 @@ var Timer = (function(){
         animation.cancel();
     }
 
+    function pause() {
+        animation.pause();
+    }
+
+    function play() {
+        animation.play();
+    }
+
     function setNivel(nivel) {
         _nivel = nivel
     }
@@ -39,6 +48,8 @@ var Timer = (function(){
     return {
         start: start,
         cancel: cancel,
+        pause: pause,
+        play: play,
         nivel: setNivel,
         subscribe: function(handler) {
             endHandler = handler

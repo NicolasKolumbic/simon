@@ -1,4 +1,4 @@
-.board__timer {
+.timer {
     position: absolute;
     left: 0;
     right: 0;
@@ -7,7 +7,9 @@
     margin: auto;
 }
 
-.board__timer::before {
+
+
+.timer::before {
     content: '';
     height: 5px;
     width: 0;

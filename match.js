@@ -90,7 +90,9 @@
         
         UserMessages.startButton.addEventListener('click', play);
         UserMessages.nextLevel.addEventListener('click', nextLevel);
-        UserMessages.restart.addEventListener('click', restart);
+        UserMessages.restartButtons.forEach(function(btn){
+            btn.addEventListener('click', restart);
+        })
     }
 
     return {init: init};
