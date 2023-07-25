@@ -1,0 +1,44 @@
+.ranking {
+    padding: 0.5rem;
+}
+
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    font: 0.785rem 'Open Sans', sans-serif;
+}
+
+.ranking-table th {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.25rem 0.5rem;
+}
+
+.ranking-table tr:nth-child(even) {
+    background-color: #eae4f7;
+}
+
+.ranking-table tr td:nth-child(2), 
+.ranking-table tr td:nth-child(3) {
+    text-align: center;
+}
+
+.ranking-table tr td:first-child,
+.ranking-table tr td:last-child {
+    padding-left: 0.3rem;
+}
+
+.sort-button-list {
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.sort-button {
+    display: inline-flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+.sort-button input:focus {
+    outline: none;
+}

@@ -5,11 +5,16 @@
 @import url(modal.css);
 @import url(timer.css);
 @import url(board.css);
+@import url(ranking.css);
 
 
 :root {
     --primary: #59369b;
     --secondary: #2ebf91;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 html {
@@ -76,6 +81,7 @@ nav {
     margin:0;
     padding:0;
     list-style-type: none;
+    margin-right: 1rem;
     color: white;
     display: inline-flex;
     align-items: center;
@@ -145,7 +151,7 @@ footer {
     position: absolute;
 }
 
-.message.in {
+.in {
     display: block;
 }
 
@@ -153,6 +159,36 @@ footer {
     background-color: transparent;
     border:none;
     cursor: pointer;
+    position: relative;
+}
+
+.transparent-btn span {
+    transform: translate(-30%, 30px) scale(0);
+    visibility: hidden;
+    transform-origin: top center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.3rem 0.5rem;
+    background-color: var(--primary);
+    color: white;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.transparent-btn span::before {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 40%;
+    top: -16px;
+    border: 7px solid transparent;
+    border-bottom: 10px solid var(--primary)
+}
+
+.transparent-btn:hover span {
+    transform: translate(-27%, 40px) scale(1);
+    visibility: visible;
+    opacity: 1;
 }
 
 .solid-btn {
@@ -163,6 +199,12 @@ footer {
     padding: 0.5rem 0.75rem;
     font-weight: 500;
     cursor: pointer;
+}
+
+.solid-btn:disabled {
+    background-color: hsl(261deg 21.36% 68.56%);
+    cursor: no-drop;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .outline-btn {
@@ -204,8 +246,13 @@ footer {
     font-size: 0.9rem;
 }
 
-.btn-game:hover {
+.btn-game:not(:disabled):hover {
     transform: scale(1.1);
+}
+
+.btn-game:disabled {
+    opacity: 0.4;
+    cursor: no-drop;
 }
 
 .next-level {
@@ -259,6 +306,20 @@ footer {
     display: flex;
     gap: 0.5rem;
     justify-content: flex-end;
+}
+
+.user-form p.input-error-messages {
+    background-color: #ce1414;
+    color: white;
+    margin: 0;
+    margin-top: 0.5rem;
+    text-align: right;
+    font: 600 0.785rem 'Open Sans';
+    padding: 0.5rem 0.75rem 0.5rem 0;
+}
+
+.input-error-messages:empty {
+    display: none;
 }
 
 

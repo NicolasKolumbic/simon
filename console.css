@@ -1,8 +1,12 @@
 .console-container {   
     transform-origin: 50% 50% 0;
     transform: rotateX(0deg) translate3d(0px, 0px, 0px);
-    transition: transform 1s;
-    
+    transition: transform 1s, opacity 1s;
+}
+
+.initialized {
+    opacity: 0.3;
+    pointer-events: none;
 }
 
 .console {

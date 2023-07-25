@@ -1,4 +1,4 @@
-var Board = (function(){
+var board = (function(){
 
     var _fields = {
         username: document.querySelector('.username'),

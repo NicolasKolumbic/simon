@@ -1,4 +1,4 @@
-var UserMessages = (function(){
+var userMessages = (function(){
     var _frames = { transform: ['scale(0)','scale(1.1)','scale(1)']};
     var _pulseFrames = { transform: ['scale(1)','scale(1.1)','scale(1)']};
 
@@ -47,6 +47,7 @@ var UserMessages = (function(){
         pulse: pulse,
         isVisible: isVisible,
         gameOver : document.querySelector('.game-over'),
+        userForm : document.querySelector('.user-form'),
         congratulation : document.querySelector('.congratulation'),
         startButton : document.querySelector('.btn-start'),
         nextLevel : document.querySelector('.next-level'),

@@ -3,31 +3,89 @@ fieldset {
     padding:0;
 }
 
-.field {
-    margin: 0.75rem 0;
+form.user-form {
+    text-align: center;
+    color: white;
+    transform: scale(1);
 }
 
-input[type=date]:required:invalid::-webkit-datetime-edit {
-    color: transparent;
+.text-box {
+    margin-bottom: 0.5rem;
 }
 
-input[type=date]:focus::-webkit-datetime-edit {
-    color: var(--primary) !important;
+.user-form p {
+   font: 300 1rem 'Open Sans';
+   text-align: center;
+   margin-top: 0;
+}
+
+input {
+   border: 2px solid var(--primary);
+   border-radius: 0.3rem;
+   height: 30px;
+   padding: 0 0.75rem;
+   flex: 1 1 auto;
+   order: 2;
+   width: 100%;
+}
+
+textarea {
+    border: 2px solid var(--primary);
+    border-radius: 0.3rem;
+    padding: 0.5rem 0.75rem;
+    order: 2;
+    margin-top: 0.5rem;
+}
+
+input:focus {
+   outline: 1px solid var(--primary);
+   color: rgb(92, 92, 92)
+}
+
+input.has-error, textarea.has-error {
+    border-color: #dc0505;
+}
+
+input.has-error + label,
+textarea.has-error + label{
+    color: #dc0505;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.flex-grow-1 {
+    flex: 1 1 auto;
+}
+
+.text-box label {
+    padding-right: 0.5rem;
     font-weight: 500;
+    flex: 0 0 auto;
+    order: 1;
+    color: var(--primary)
 }
 
-::-webkit-calendar-picker-indicator {
-    appearance: none;
-    display: none;
+input.invalid {
+    border: 1px solid #dc0505;
 }
 
-.calendar {
-    position: relative;
+input.invalid + label {
+    color: red;
 }
-
-.calendar::before {
-    content: '📅';
-    position: absolute;
-    top: 25%;
-    right: 3px;
+.error-messages {
+    margin:0;
+    margin-top: 0.3rem;
+    font: 500 0.785rem 'Open Sans';
+    color: #dc0505;
+    text-align: end;
 }

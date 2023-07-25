@@ -22,13 +22,15 @@
             <nav>
                 <ul class="reset-list navbar">
                     <li>
-                        <button type="button" class="btn-game btn-game-second btn-restart">
-                            Reiniciar
+                        <button type="button" data-modal="ranking-modal" class="transparent-btn">
+                            <img src="images/ranking.svg" class="icon" alt="Puntuaciones" />
+                            <span class="tooltip">Puntaciones</span>
                         </button>
                     </li>
                     <li>
-                        <button type="button" id="setting-btn" class="transparent-btn">
-                            <img src="images/settings-icon.svg" class="icon" />
+                        <button type="button" data-modal="contact-form-modal" class="transparent-btn">
+                            <img src="images/contact.svg" class="icon" alt="Contacto" />
+                            <span class="tooltip">Contacto</span>
                         </button>
                     </li>
                 </ul>
@@ -38,9 +40,16 @@
         <main>
             <div>
                 <section class="user-messages">
-                    <button type="button" class="message btn-game btn-start in">
-                        <span>Jugar</span>
-                    </button>
+                    <form id="user-form" class="message in user-form" novalidate >
+                        <p>Ingresa un nombre de usuario y juega (mínimo 3 caracteres)</p>
+                        <div class="text-box">
+                            <input type="text" id="userName" placeholder="Nombre de usuario" minlength="3" required />
+                        </div>
+                        <p class="error-messages"></p>
+                        <button type="submit" class="btn-game btn-submit" disabled>
+                            <span>Jugar</span>
+                        </button>
+                    </form>
                     <div class="message game-over">
                         <h4 class="game-over__message message-header"><span class="game-over__devil">😈</span> Game Over
                         </h4>
@@ -58,7 +67,7 @@
                         </button>
                     </div>
                 </section>
-                <section class="console-container blocked">
+                <section class="console-container blocked initialized">
                     <div class="console">
                         <div class="console__shadow"></div>
                         <div class="base base-shadow"></div>
@@ -101,7 +110,7 @@
                 <ul class="reset-list board__fields">
                     <li class="board__field">
                         <span class="label">Jugador</span>
-                        <span class="username">Nicolas</span>
+                        <span class="username">-</span>
                     </li>
                     <li class="board__field">
                         <span class="label">Nivel</span>
@@ -121,81 +130,86 @@
             </div>
         </footer>
     </div>
-    <dialog class="modal">
+    <dialog id="contact-form-modal" class="modal">
         <div class="modal__header">
-            <h3 class="modal__header__title">Datos de Usuario</h3>
+            <h3 class="modal__header__title">Contacto</h3>
             <button type="button" class="transparent-btn close-btn">
                 ✖
             </button>
         </div>
         <hr>
         <div class="modal__content">
-            <form>
+            <form id="contact-form" novalidate>
                 <fieldset>
-                    <div class="field">
-                        <div class="google-input">
-                            <input type="text" id="name" class="google-input__control" required pattern="\S+.*" />
-                            <label class="google-input__label" for="name">
-                                <span class="google-input__label__border-top"></span>
-                                <div class="google-input__border-top__lbl">
-                                    <span class="google-input__border-top__text">Nombre</span>
-                                </div>
-                                <span class="google-input__label__border-top"></span>
-                            </label>
-                        </div>
+                    <div class="text-box">           
+                        <div class="d-flex align-items-center">
+                            <input type="text" id="name" minlength="3" pattern="^[A-Za-z0-9]+" data-error-message="El campo debe contener caracteres alfanuméricos"  required />
+                            <label for="name">Nombre</label>
+                        </div>  
+                        <p class="error-messages"></p>
                     </div>
-                    <div class="field">
-                        <div class="google-input">
-                            <input type="number" id="age" class="google-input__control" required pattern="\S+.*" />
-                            <label class="google-input__label" for="age">
-                                <span class="google-input__label__border-top"></span>
-                                <div class="google-input__border-top__lbl">
-                                    <span class="google-input__border-top__text">Edad</span>
-                                </div>
-                                <span class="google-input__label__border-top"></span>
-                            </label>
+                    <div class="text-box">
+                        <div class="d-flex align-items-center">
+                            <input type="text" id="email" pattern="^[A-Za-z0-9\-\.]+@([A-Za-z0-9]+\.)+[A-Za-z]{2,4}$" data-error-message="El campo espera un formato de correo electrónico" required />
+                            <label for="email">Email</label>
                         </div>
+                        <p class="error-messages"></p>
                     </div>
-                    <div class="field">
-                        <div class="google-input">
-                            <input type="date" id="bithday" class="google-input__control calendar" required />
-                            <label class="google-input__label" for="bithday">
-                                <span class="google-input__label__border-top"></span>
-                                <div class="google-input__border-top__lbl">
-                                    <span class="google-input__border-top__text">Fecha de Nacimiento</span>
-                                </div>
-                                <span class="google-input__label__border-top"></span>
-                            </label>
+                    <div class="text-box">
+                        <div class="d-flex flex-column">
+                            <textarea id="message" rows="10" minlength="5" required></textarea>
+                            <label for="message">Mensaje</label>
                         </div>
-                    </div>
-                    <div class="field">
-                        <div class="google-input">
-                            <input type="email" id="email" class="google-input__control" required pattern="\S+.*" />
-                            <label class="google-input__label" for="email">
-                                <span class="google-input__label__border-top"></span>
-                                <div class="google-input__border-top__lbl">
-                                    <span class="google-input__border-top__text">Email</span>
-                                </div>
-                                <span class="google-input__label__border-top"></span>
-                            </label>
-                        </div>
+                        <p class="error-messages"></p>
                     </div>
                 </fieldset>
+                <div class="modal__actions">
+                    <button type="submit" id="send-contact-form" class="solid-btn btn-submit">Enviar</button>
+                    <button type="button" id="cancel-contact-form" class="outline-btn close-btn">Cancelar</button>
+                </div>
             </form>
         </div>
+        
+    </dialog>
+    <dialog id="ranking-modal" class="modal">
+        <div class="modal__header">
+            <h3 class="modal__header__title">Puntuaciones</h3>
+            <button type="button" class="transparent-btn close-btn">
+                ✖
+            </button>
+        </div>
+        <hr>
+        <div class="modal__content">
+            <div>
+                <div class="ranking">
+                    <ul class="d-flex reset-list sort-button-list">
+                        <li class="sort-button">
+                            <label for="date">Fecha</label>
+                            <input type="radio" value="date" name="sortRadioButtons" checked />
+                        </li>
+                        <li class="sort-button">
+                            <label for="points">Puntos</label>
+                            <input type="radio" value="points" name="sortRadioButtons" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="modal__actions">
-            <button type="submit" class="solid-btn">Guardar</button>
-            <button type="button" class="outline-btn close-btn">Cancelar</button>
+            <button type="submit" id="send-contact-form" class="solid-btn btn-submit">Enviar</button>
+            <button type="button" id="cancel-contact-form" class="outline-btn close-btn">Cancelar</button>
         </div>
     </dialog>
     <script src="timer.js"></script>
     <script src="iterator.js"></script>
     <script src="sequence.js"></script>
+    <script src="modal.js"></script>
     <script src="board.js"></script>
     <script src="user-messages.js"></script>
     <script src="player.js"></script>
     <script src="game-console.js"></script>
     <script src="form.js"></script>
+    <script src="ranking.js"></script>
     <script src="match.js"></script>
     <script src="main.js"></script>
 </body>

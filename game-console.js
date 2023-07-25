@@ -1,8 +1,9 @@
-var GameConsole = (function(){
+var gameConsole = (function(){
 
     var _randomNumberCount = 4;
     var _sequence = null;
     var _observersIterator = new Iterator();
+    var _container = document.querySelector('.console-container');
     var _buttons = {
         green: document.querySelector('#green'),
         red: document.querySelector('#red'),
@@ -57,7 +58,7 @@ var GameConsole = (function(){
     }
 
     function _block() {
-        document.querySelector('.console-container').classList.add('blocked');
+        _container.classList.add('blocked');
         _buttons.toArray().forEach(function (btn) {
             btn.setAttribute('disabled', true);
             btn.removeEventListener('click', _clickHandler);
@@ -65,7 +66,7 @@ var GameConsole = (function(){
     }
 
     function _unblock() {
-        document.querySelector('.console-container').classList.remove('blocked');
+        _container.classList.remove('blocked');
         _buttons.toArray().forEach(function(btn) {
             btn.removeAttribute('disabled');
             btn.addEventListener('click', _clickHandler);
@@ -90,11 +91,16 @@ var GameConsole = (function(){
         _observersIterator.add(observer);
     }
 
+    function _initialized() {
+        _container.classList.remove('initialized');
+    }
+
     return {
         execute: _execute,
         block: _block,
         unblock: _unblock,
         executionFinish: _executionFinish,
+        initialized: _initialized,
         subscribe: _subscribe,
         getRandomButton: _getRandomButton
     };

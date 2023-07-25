@@ -9,7 +9,7 @@ var Sequence = (function(){
         });
 
         Object.defineProperty(this, "last", {
-            get: function () {return this.buttonList[this.buttonList.length - 1];}
+            get: function () {return this.buttonList.lastValue;}
         });
 
         Object.defineProperty(this, "iterator", {

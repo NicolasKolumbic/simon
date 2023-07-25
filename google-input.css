@@ -6,8 +6,7 @@
 .google-input__label {
     animation: expand-cell-reverse 0.3s ease-out 1;
     animation-fill-mode: forwards;
-    display: grid;
-    grid-template-columns: 20px 0 1fr;
+    display: flex;
     margin: 0;
     padding: 0 0.4rem;
     position: absolute;
@@ -17,13 +16,22 @@
     box-sizing: border-box;
 }
 
-.google-input__label__border-top::before {
+.google-input__label__border-top:before {
     content: "";
     display: block;
     border-top: 2px solid var(--primary);
     transition: all 0.3s;
     margin-block-start: 0;
     margin-block-end: 0;
+
+}
+
+.google-input__label__border-top:first-child::before {
+    width: 20px;
+}
+
+.google-input__label__border-top:last-child {
+    flex: 1 1 auto;
 }
 
 .google-input__border-top__lbl {
@@ -32,6 +40,10 @@
     padding-right: 0;
     animation: align_text-reverse 0.3s ease-out 1;
     animation-fill-mode: forwards;
+    position: absolute;
+    inset: 0px 0px 0px 25px;
+    background-color: white;
+    padding: 0 0.25rem;
 }
 
 .google-input__border-top__text {
@@ -83,7 +95,6 @@
 
 .google-input__control:valid+.google-input__label {
     animation: none;
-    grid-template-columns: 20px auto 1fr;
 }
 
 .google-input__control:valid+.google-input__label .google-input__border-top__lbl {
