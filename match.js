@@ -25,6 +25,7 @@
         _player.nivel = 1;
         timer.nivel(_player.nivel);
         board.set('nivel', _player.nivel);
+        board.set('points', 0);
         _player.sequence = new Sequence();
         newLevel();
     }
