@@ -4,16 +4,23 @@ var Sequence = (function(){
         this.buttonList = [];
         this._iterator = null;
 
-        Object.defineProperty(this, "count", {
-            get: function () {return this.buttonList.length;}
+        Object.defineProperty(Sequence.prototype, "count", {
+            get: function () {return this.buttonList.length;},
+            enumerable: false,
+            configurable: true
         });
 
-        Object.defineProperty(this, "last", {
-            get: function () {return this.buttonList.lastValue;}
+        Object.defineProperty(Sequence.prototype, "last", {
+            get: function () {return this.buttonList.lastValue;},
+            enumerable: false,
+            configurable: true
         });
 
-        Object.defineProperty(this, "iterator", {
-            get: function () {return getIterator.call(this)}
+        Object.defineProperty(Sequence.prototype, "iterator", {
+            get: function () {return getIterator.call(this)},
+            enumerable: false,
+            configurable: true
+
         });
     }
 
