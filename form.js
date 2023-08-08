@@ -6,6 +6,19 @@ var Form = (function(){
         _init.call(this);
     }
 
+    Form.prototype.reset = _reset;
+
+    function _reset() {
+        return Array.from(this._form.elements)
+        .filter(function(element) {
+            return element.type !== 'submit' && /input|textarea/i.test(element.tagName);
+        })
+        .forEach(function(element) {
+            element.value = '';
+            _clear(element);
+        })
+    }
+
     function _validate(event) {
         var input = event.target;
         var submitButton = _getSubmitButton(this._form.elements);
@@ -32,13 +45,12 @@ var Form = (function(){
                 submitButton.removeAttribute('disabled');
             }
             
-            _clear.call(input, event);
+            _clear(input);
             
         }
     }
 
-    function _clear(event) {
-        var input = event.target;
+    function _clear(input) {
         if(input.classList.contains('has-error')) {
             input.classList.remove('has-error');
         }
@@ -67,6 +79,10 @@ var Form = (function(){
         })
     }
 
+    function _clearHandler(event) {
+        _clear(this);
+    }
+
     function _init() {
         var _self = this;
         this._form.addEventListener('submit', function(event) {
@@ -76,7 +92,7 @@ var Form = (function(){
       
         this._form.querySelectorAll('.text-box input, .text-box textarea').forEach(function(ctrol){
             ctrol.addEventListener('blur', _validate.bind(_self));
-            ctrol.addEventListener('focus', _clear.bind(_self));
+            ctrol.addEventListener('focus', _clearHandler);
         });
     }
 

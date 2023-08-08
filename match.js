@@ -139,6 +139,7 @@
                 if(timer.isPaused()) {
                     timer.play();
                 }
+                _contactForm.reset();
             }
         });
 
