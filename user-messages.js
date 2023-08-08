@@ -52,6 +52,6 @@ var userMessages = (function(){
         startButton : document.querySelector('.btn-start'),
         nextLevel : document.querySelector('.next-level'),
         restartButtons : document.querySelectorAll('.btn-restart'),
-    };
+    }
 
 })();

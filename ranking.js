@@ -23,11 +23,11 @@ var ranking = (function(){
         if(key === 'date') {
             data = scores.sort(function(current, next) {
                 return  new Date(next.date) - new Date(current.date);
-            })
+            });
         } else {
            data = scores.sort(function(current, next) {
                 return  next.points - current.points;
-            })
+            });
         }
 
         return data;
@@ -36,8 +36,10 @@ var ranking = (function(){
     function _generateHtml(key) {
         var scores = getSortedData(key);
 
-        document.querySelectorAll('.sort-button input').forEach(function(radioButton){
-            radioButton.addEventListener('change', updateSorter)
+        document
+        .querySelectorAll('.sort-button input')
+        .forEach(function(radioButton){
+            radioButton.addEventListener('change', updateSorter);
         });
 
         if(scores) {
@@ -58,7 +60,7 @@ var ranking = (function(){
     }
 
     function _removeTable() {
-        _table.remove()
+        _table.remove();
     }
 
     function _createRow(row) {

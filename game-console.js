@@ -17,7 +17,7 @@ var gameConsole = (function(){
                 this.yellow
             ]
         }
-    } 
+    };
 
     var _clickHandler = _notify;
     var _executionFinishHandler = null;
@@ -28,12 +28,13 @@ var gameConsole = (function(){
             pseudoElement: '::after'
         });
 
-        animation.addEventListener('finish', _run)
+        animation.addEventListener('finish', _run);
     }
 
     function _notify(event) {
         var buttonId = event.target.id;
         var observer = _observersIterator.next();
+        
         while (!observer.done) {
             observer.value.addSequenceValue(buttonId);
             observer = _observersIterator.next();

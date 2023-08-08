@@ -1,7 +1,7 @@
 var Player = (function(){
 
     function Player() {
-        this.name = "";
+        this.name = '';
         this.nivel = 1;
         this.points = 0;
         this.sequence = null;

@@ -6,14 +6,14 @@ var Iterator = (function(){
     }
 
     Iterator.prototype.add = function(item) {
-        this.items.push(item)
+        this.items.push(item);
     }
 
     Iterator.prototype.next = function() {
         var item =  {
             done: this.index === this.items.length,
             value: this.items[this.index] 
-        }
+        };
         this.index++;
         return item;
     }

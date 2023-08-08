@@ -9,7 +9,7 @@
     var _pointByNivel = 10;
     var _match = {
         addSequenceValue: validate
-    }
+    };
 
     function nextLevel() {
         userMessages.hide(userMessages.nextLevel);
@@ -49,7 +49,7 @@
         if(scores) {
             scores = JSON.parse(scores);
         } else {
-            scores = []
+            scores = [];
         }
         scores.push(match);
         localStorage.setItem('simon-score', JSON.stringify(scores));

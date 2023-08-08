@@ -23,7 +23,7 @@ var Modal = (function(){
             this.beforeOpen();
         }
 
-        this.modal.showModal()
+        this.modal.showModal();
     }
 
     function _closeModal() {
@@ -31,7 +31,7 @@ var Modal = (function(){
             this.afterClose();
         }
        
-        this.modal.close()
+        this.modal.close();
     }
 
     return Modal;

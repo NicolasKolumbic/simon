@@ -1,5 +1,5 @@
 var timer = (function(){
-    var animation = null
+    var animation = null;
     var timer = document.querySelector('.timer');
     var endHandler = null;
     var _nivel = 1;
@@ -8,7 +8,7 @@ var timer = (function(){
 
     function _calcDuration() {   
         duration = duration * Math.pow(reductionFactor, _nivel - 1);
-        return parseInt(duration)
+        return parseInt(duration);
     }
      
     function _finishHandler() {
@@ -22,10 +22,11 @@ var timer = (function(){
     function _start() {
         var duration = _calcDuration();
         
-       animation = timer.animate({ width: [0, '170px'] }, {duration: duration,  pseudoElement: '::before'})
+       animation = timer.animate({ width: [0, '170px'] }, {duration: duration,  pseudoElement: '::before'});
 
-       animation.addEventListener('finish', _finishHandler)
-       animation.addEventListener('cancel', _cancelHandler)
+       animation.addEventListener('finish', _finishHandler);
+       animation.addEventListener('cancel', _cancelHandler);
+      
     }
 
     function _cancel() {

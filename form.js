@@ -2,7 +2,7 @@ var Form = (function(){
 
     function Form(setting){
         this._submitHandlerSetting = setting.submitHandler;
-        this._form = document.getElementById(setting.id)
+        this._form = document.getElementById(setting.id);
         _init.call(this);
     }
 
@@ -16,7 +16,7 @@ var Form = (function(){
         .forEach(function(element) {
             element.value = '';
             _clear(element);
-        })
+        });
     }
 
     function _validate(event) {
@@ -29,11 +29,11 @@ var Form = (function(){
             }
             
             if(input.validity.valueMissing) {
-                errorMessage.textContent = "El campo\"" + input.nextElementSibling.textContent + "\" es requerido."
+                errorMessage.textContent = 'El campo "' + input.nextElementSibling.textContent + '" es requerido.';
             } else if(input.validity.tooShort) {
-                errorMessage.textContent = "El campo \"" + input.nextElementSibling.textContent + "\" debe tener al menos " + input.minLength + " caracteres."
+                errorMessage.textContent = 'El campo "' + input.nextElementSibling.textContent + '" debe tener al menos ' + input.minLength + ' caracteres.';
             } else if(input.validity.patternMismatch || input.validity.typeMismatch) {
-                errorMessage.textContent = "El formato del campo \"" + input.nextElementSibling.textContent + "\" es erroneo." + input.getAttribute('data-error-message');
+                errorMessage.textContent = 'El formato del campo "' + input.nextElementSibling.textContent + '" es erroneo.' + input.getAttribute('data-error-message');
             }
             submitButton.setAttribute('disabled', true);
         } else { 
@@ -70,7 +70,7 @@ var Form = (function(){
         })
         .some(function(element) {
             return !element.validity.valid;
-        })
+        });
     }
 
     function _getSubmitButton(elements) {

@@ -20,7 +20,6 @@ var Sequence = (function(){
             get: function () {return getIterator.call(this)},
             enumerable: false,
             configurable: true
-
         });
     }
 
