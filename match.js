@@ -23,6 +23,7 @@
     function restart() {
         userMessages.hide(userMessages.gameOver);
         _player.nivel = 1;
+        _player.resetPoints();
         timer.nivel(_player.nivel);
         board.set('nivel', _player.nivel);
         board.set('points', 0);

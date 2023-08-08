@@ -20,6 +20,10 @@ var Player = (function(){
         this.points += points;
     }
 
+    Player.prototype.resetPoints = function() {
+        this.points = 0;
+    }
+
     return Player;
 
 })();
