@@ -43,9 +43,12 @@
                 <form id="user-form" class="message in user-form" novalidate >
                     <p>Ingresa un nombre de usuario y juega (mínimo 3 caracteres)</p>
                     <div class="text-box">
-                        <input type="text" id="userName" placeholder="Nombre de usuario" minlength="3" required />
+                        <div class="d-flex flex-column">
+                            <input type="text" id="userName" placeholder="Nombre de usuario" minlength="3" required />
+                            <label for="userName" class="hide">Nombre de usuario</label>
+                        </div>
+                        <p class="error-messages error-dark"></p>
                     </div>
-                    <p class="error-messages"></p>
                     <button type="submit" class="btn-game btn-submit" disabled>
                         <span>Jugar</span>
                     </button>
