@@ -14,193 +14,196 @@
 
 <body>
     <div class="container">
-    <header>
-        <h1 class="title">
-            <img src="assets/images/isotipo-simon.svg" alt="Simon" class="brand-simon" />
-            <span class="title__text">Simon</span>
-        </h1>
-        <nav>
-            <ul class="reset-list navbar">
-                <li>
-                    <button type="button" data-modal="ranking-modal" class="transparent-btn">
-                        <img src="assets/images/ranking.svg" class="icon" alt="Puntuaciones" />
-                        <span class="tooltip">Puntaciones</span>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" data-modal="contact-form-modal" class="transparent-btn">
-                        <img src="assets/images/contact.svg" class="icon" alt="Contacto" />
-                        <span class="tooltip">Contacto</span>
-                    </button>
-                </li>
-            </ul>
-            <div class="timer"></div>
-        </nav>
-    </header>
-    <main>
-        <div>
-            <section class="user-messages">
-                <form id="user-form" class="message in user-form" novalidate >
-                    <p>Ingresa un nombre de usuario y juega (mínimo 3 caracteres)</p>
-                    <div class="text-box">
-                        <div class="d-flex flex-column">
-                            <input type="text" id="userName" placeholder="Nombre de usuario" minlength="3" required />
-                            <label for="userName" class="hide">Nombre de usuario</label>
+        <header>
+            <h1 class="title">
+                <img src="assets/images/isotipo-simon.svg" alt="Simon" class="brand-simon" />
+                <span class="title__text">Simon</span>
+            </h1>
+            <nav>
+                <ul class="reset-list navbar">
+                    <li>
+                        <button type="button" data-modal="ranking-modal" class="transparent-btn">
+                            <img src="assets/images/ranking.svg" class="icon" alt="Puntuaciones" />
+                            <span class="tooltip">Puntaciones</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" data-modal="contact-form-modal" class="transparent-btn">
+                            <img src="assets/images/contact.svg" class="icon" alt="Contacto" />
+                            <span class="tooltip">Contacto</span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="timer"></div>
+            </nav>
+        </header>
+        <main>
+            <div>
+                <section class="user-messages">
+                    <form id="user-form" class="message in user-form" novalidate>
+                        <p>Ingresa un nombre de usuario y juega (mínimo 3 caracteres)</p>
+                        <div class="text-box">
+                            <div class="d-flex flex-column">
+                                <input type="text" id="userName" placeholder="Nombre de usuario" minlength="3"
+                                    required />
+                                <label for="userName" class="hide">Nombre de usuario</label>
+                            </div>
+                            <p class="error-messages error-dark"></p>
                         </div>
-                        <p class="error-messages error-dark"></p>
+                        <button type="submit" class="btn-game btn-submit" disabled>
+                            <span>Jugar</span>
+                        </button>
+                    </form>
+                    <div class="message game-over">
+                        <h4 class="game-over__message message-header"><span class="game-over__devil">😈</span> Game Over
+                        </h4>
+                        <button class="btn-game btn-restart" type="button">
+                            Reiniciar
+                        </button>
                     </div>
-                    <button type="submit" class="btn-game btn-submit" disabled>
-                        <span>Jugar</span>
-                    </button>
-                </form>
-                <div class="message game-over">
-                    <h4 class="game-over__message message-header"><span class="game-over__devil">😈</span> Game Over
-                    </h4>
-                    <button class="btn-game btn-restart" type="button">
-                        Reiniciar
-                    </button>
-                </div>
-                <h4 class="congratulation message message-header">👍 Bien hecho!</h4>
-                <div class="next-level message">
-                    <h4 class="message-header">
-                        ¡Excelente, continuemos al siguiente nivel!
-                    </h4>
-                    <button class="btn-game btn-next" type="button">
-                        Siguiente
-                    </button>
-                </div>
+                    <h4 class="congratulation message message-header">👍 Bien hecho!</h4>
+                    <div class="next-level message">
+                        <h4 class="message-header">
+                            ¡Excelente, continuemos al siguiente nivel!
+                        </h4>
+                        <button class="btn-game btn-next" type="button">
+                            Siguiente
+                        </button>
+                    </div>
+                </section>
+                <section class="console-container blocked initialized">
+                    <div class="console">
+                        <div class="console__shadow"></div>
+                        <div class="base base-shadow"></div>
+                        <div class="console__bottom-box shine texture"></div>
+                        <div class="console__middle texture"></div>
+                        <div class="console__top-box texture shine">
+                            <div class="light-effects shadow light"></div>
+                        </div>
+                        <div class="console__button-set">
+                            <div class="console__cell blue">
+                                <button class="console__cell__btn" id="blue" type="button" disabled></button>
+                            </div>
+                            <div class="console__cell red">
+                                <button class="console__cell__btn" id="red" type="button" disabled></button>
+                            </div>
+                            <div class="console__cell yellow">
+                                <button class="console__cell__btn" id="yellow" type="button" disabled></button>
+                            </div>
+                            <div class="console__cell green">
+                                <button class="console__cell__btn" id="green" type="button" disabled></button>
+                            </div>
+                        </div>
+                        <div class="console__front texture"></div>
+                        <div class="console__messages">
+                            <div class="console__messages__states play">
+                                <h3 class="play">
+                                    <span>Jugar</span>
+                                </h3>
+                            </div>
+                            <div class="console__messages__states pay-attention">
+                                <h3 class="pay-attention">
+                                    <span>Atención</span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <section class="board">
+                <ul class="reset-list board__fields">
+                    <li class="board__field">
+                        <span class="label">Jugador</span>
+                        <span class="username">-</span>
+                    </li>
+                    <li class="board__field">
+                        <span class="label">Nivel</span>
+                        <span class="nivel">1</span>
+                    </li>
+                    <li class="board__field">
+                        <span class="label">Puntos</span>
+                        <span class="points">0</span>
+                    </li>
+                </ul>
             </section>
-            <section class="console-container blocked initialized">
-                <div class="console">
-                    <div class="console__shadow"></div>
-                    <div class="base base-shadow"></div>
-                    <div class="console__bottom-box shine texture"></div>
-                    <div class="console__middle texture"></div>
-                    <div class="console__top-box texture shine">
-                        <div class="light-effects shadow light"></div>
-                    </div>
-                    <div class="console__button-set">
-                        <div class="console__cell blue">
-                            <button class="console__cell__btn" id="blue" type="button" disabled></button>
-                        </div>
-                        <div class="console__cell red">
-                            <button class="console__cell__btn" id="red" type="button" disabled></button>
-                        </div>
-                        <div class="console__cell yellow">
-                            <button class="console__cell__btn" id="yellow" type="button" disabled></button>
-                        </div>
-                        <div class="console__cell green">
-                            <button class="console__cell__btn" id="green" type="button" disabled></button>
-                        </div>
-                    </div>
-                    <div class="console__front texture"></div>
-                    <div class="console__messages">
-                        <div class="console__messages__states play">
-                            <h3 class="play">
-                                <span>Jugar</span>
-                            </h3>
-                        </div>
-                        <div class="console__messages__states pay-attention">
-                            <h3 class="pay-attention">
-                                <span>Atención</span>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <section class="board">
-            <ul class="reset-list board__fields">
-                <li class="board__field">
-                    <span class="label">Jugador</span>
-                    <span class="username">-</span>
-                </li>
-                <li class="board__field">
-                    <span class="label">Nivel</span>
-                    <span class="nivel">1</span>
-                </li>
-                <li class="board__field">
-                    <span class="label">Puntos</span>
-                    <span class="points">0</span>
-                </li>
-            </ul> 
-        </section>
-    </main>
-    <footer>
-        <div class="credits">
-            <h6 class="credits__subject">Lenguajes de Programación para la Administración</h6>
-            <img src="assets/images/uai.svg" alt="logo Universidad Abierta Interamericana" class="brand" />
-        </div>
-    </footer>
+        </main>
+        <footer>
+            <div class="credits">
+                <h6 class="credits__subject">Lenguajes de Programación para la Administración</h6>
+                <img src="assets/images/uai.svg" alt="logo Universidad Abierta Interamericana" class="brand" />
+            </div>
+        </footer>
     </div>
     <dialog id="contact-form-modal" class="modal">
-    <div class="modal__header">
-        <h3 class="modal__header__title">Contacto</h3>
-        <button type="button" class="transparent-btn close-btn">
-            ✖
-        </button>
-    </div>
-    <hr>
-    <div class="modal__content">
-        <form id="contact-form" novalidate>
-            <fieldset>
-                <div class="text-box">           
-                    <div class="d-flex align-items-center">
-                        <input type="text" id="name" minlength="3" pattern="^[A-Za-z0-9]+" data-error-message="El campo debe contener caracteres alfanuméricos"  required />
-                        <label for="name">Nombre</label>
-                    </div>  
-                    <p class="error-messages"></p>
-                </div>
-                <div class="text-box">
-                    <div class="d-flex align-items-center">
-                        <input type="text" id="email" pattern="^[A-Za-z0-9\-\.]+@([A-Za-z0-9]+\.)+[A-Za-z]{2,4}$" data-error-message="El campo espera un formato de correo electrónico" required />
-                        <label for="email">Email</label>
+        <div class="modal__header">
+            <h3 class="modal__header__title">Contacto</h3>
+            <button type="button" class="transparent-btn close-btn">
+                ✖
+            </button>
+        </div>
+        <hr>
+        <div class="modal__content">
+            <form id="contact-form" novalidate>
+                <fieldset>
+                    <div class="text-box">
+                        <div class="d-flex align-items-center">
+                            <input type="text" id="name" minlength="3" pattern="^[A-Za-z0-9]+"
+                                data-error-message="El campo debe contener caracteres alfanuméricos" required />
+                            <label for="name">Nombre</label>
+                        </div>
+                        <p class="error-messages"></p>
                     </div>
-                    <p class="error-messages"></p>
-                </div>
-                <div class="text-box">
-                    <div class="d-flex flex-column">
-                        <textarea id="message" rows="10" minlength="5" required></textarea>
-                        <label for="message">Mensaje</label>
+                    <div class="text-box">
+                        <div class="d-flex align-items-center">
+                            <input type="text" id="email" pattern="^[A-Za-z0-9\-\.]+@([A-Za-z0-9]+\.)+[A-Za-z]{2,4}$"
+                                data-error-message="El campo espera un formato de correo electrónico" required />
+                            <label for="email">Email</label>
+                        </div>
+                        <p class="error-messages"></p>
                     </div>
-                    <p class="error-messages"></p>
+                    <div class="text-box">
+                        <div class="d-flex flex-column">
+                            <textarea id="message" rows="10" minlength="5" required></textarea>
+                            <label for="message">Mensaje</label>
+                        </div>
+                        <p class="error-messages"></p>
+                    </div>
+                </fieldset>
+                <div class="modal__actions">
+                    <button type="submit" class="solid-btn btn-submit" disabled>Enviar</button>
+                    <button type="button" class="outline-btn close-btn">Cancelar</button>
                 </div>
-            </fieldset>
-            <div class="modal__actions">
-                <button type="submit" class="solid-btn btn-submit" disabled>Enviar</button>
-                <button type="button" class="outline-btn close-btn">Cancelar</button>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
 
     </dialog>
     <dialog id="ranking-modal" class="modal">
-    <div class="modal__header">
-        <h3 class="modal__header__title">Puntuaciones</h3>
-        <button type="button" class="transparent-btn close-btn">
-            ✖
-        </button>
-    </div>
-    <hr>
-    <div class="modal__content">
-        <div>
-            <div class="ranking">
-                <ul class="d-flex reset-list sort-button-list">
-                    <li class="sort-button">
-                        <label for="date">Fecha</label>
-                        <input type="radio" id="date" value="date" name="sortRadioButtons" checked />
-                    </li>
-                    <li class="sort-button">
-                        <label for="points">Puntos</label>
-                        <input type="radio" id="points" value="points" name="sortRadioButtons" />
-                    </li>
-                </ul>
+        <div class="modal__header">
+            <h3 class="modal__header__title">Puntuaciones</h3>
+            <button type="button" class="transparent-btn close-btn">
+                ✖
+            </button>
+        </div>
+        <hr>
+        <div class="modal__content">
+            <div>
+                <div class="ranking">
+                    <ul class="d-flex reset-list sort-button-list">
+                        <li class="sort-button">
+                            <label for="date">Fecha</label>
+                            <input type="radio" id="date" value="date" name="sortRadioButtons" checked />
+                        </li>
+                        <li class="sort-button">
+                            <label for="points">Puntos</label>
+                            <input type="radio" id="points" value="points" name="sortRadioButtons" />
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="modal__actions">
-        <button type="button" class="outline-btn close-btn">Cerrar</button>
-    </div>
+        <div class="modal__actions">
+            <button type="button" class="outline-btn close-btn">Cerrar</button>
+        </div>
     </dialog>
     <script src="scripts/timer.js"></script>
     <script src="scripts/iterator.js"></script>
