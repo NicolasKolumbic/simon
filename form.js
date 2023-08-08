@@ -1,14 +1,14 @@
 var Form = (function(){
 
     function Form(setting){
-        this.submitHandler = setting.submitHandler;
-        this.form = document.getElementById(setting.id)
+        this._submitHandlerSetting = setting.submitHandler;
+        this._form = document.getElementById(setting.id)
         _init.call(this);
     }
 
     function _validate(event) {
         var input = event.target;
-        var submitButton = _getSubmitButton(this.form.elements);
+        var submitButton = _getSubmitButton(this._form.elements);
         if(!input.validity.valid) {
             var errorMessage = input.parentElement.nextElementSibling;
             if(!input.classList.contains('has-error')) {
@@ -23,12 +23,17 @@ var Form = (function(){
                 errorMessage.textContent = "El formato del campo \"" + input.nextElementSibling.textContent + "\" es erroneo." + input.getAttribute('data-error-message');
             }
             submitButton.setAttribute('disabled', true);
-        } else {
+        } else { 
             if(input.classList.contains('has-error')) {
                 input.classList.remove('has-error');
             }
-            submitButton.removeAttribute('disabled');
+
+            if(!_formHasInvalidInput.call(this, input)) {
+                submitButton.removeAttribute('disabled');
+            }
+            
             _clear.call(input, event);
+            
         }
     }
 
@@ -41,9 +46,19 @@ var Form = (function(){
     }
 
     function _submitHandler() {
-        if(this.submitHandler) {
-            this.submitHandler(this.form);
+        if(this._submitHandlerSetting) {
+            this._submitHandlerSetting(this._form);
         }
+    }
+
+    function _formHasInvalidInput(input) {
+        return Array.from(this._form.elements)
+        .filter(function(element) {
+            return element.id !== input.id && element.type !== 'submit';
+        })
+        .some(function(element) {
+            return !element.validity.valid;
+        })
     }
 
     function _getSubmitButton(elements) {
@@ -54,12 +69,12 @@ var Form = (function(){
 
     function _init() {
         var _self = this;
-        this.form.addEventListener('submit', function(event) {
+        this._form.addEventListener('submit', function(event) {
             event.preventDefault();
             _submitHandler.call(_self);
         });
       
-        this.form.querySelectorAll('.text-box input, .text-box textarea').forEach(function(ctrol){
+        this._form.querySelectorAll('.text-box input, .text-box textarea').forEach(function(ctrol){
             ctrol.addEventListener('blur', _validate.bind(_self));
             ctrol.addEventListener('focus', _clear.bind(_self));
         });
