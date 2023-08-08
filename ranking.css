@@ -6,12 +6,17 @@
     width: 100%;
     border-collapse: collapse;
     font: 0.785rem 'Open Sans', sans-serif;
+    display: block;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .ranking-table th {
     background-color: var(--primary);
     color: white;
     padding: 0.25rem 0.5rem;
+    position: sticky;
+    top: 0;
 }
 
 .ranking-table tr:nth-child(even) {
